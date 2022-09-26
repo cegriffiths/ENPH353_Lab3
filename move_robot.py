@@ -90,8 +90,7 @@ class image_to_drive:
     # Blur image to reduce noise
     img_blur = cv2.GaussianBlur(img_gray, gaussianKernel, 0)
     # Binarize the image
-    _, not_img_bin = cv2.threshold(img_blur, threshold, 255, cv2.THRESH_BINARY)
-    img_bin = ~not_img_bin
+    _, not_img_bin = cv2.threshold(img_blur, threshold, 255, cv2.THRESH_BINARY_INV)
     # Find the contours of the image
     contours, _ = cv2.findContours(img_bin, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     # Overlay the contours onto the original image
